@@ -39,13 +39,13 @@ public class SeleniumUtil {
 	 */
 	public static WebElement getElement(TestStep step) throws Exception{
 		   String loc = step.getLocator();
-		   if(StringUtil.isBlank(loc)) 
-			   throw new Exception("当前步骤未定位到任何控件元素！");
+		   if(StringUtil.isBlank(loc)) {
+               throw new Exception("当前步骤未定位到任何控件元素！");
+           }
 		   
 		   int idx1 = loc.indexOf("=") ;
 		   String locatename = loc.substring(0, idx1);
 		   String locatevalue = loc.substring(idx1+1);
-//		   System.out.println(locatename+"  "+locatevalue);
 
 		   WebElement e = null;
 		   switch(locatename){
@@ -96,14 +96,17 @@ public class SeleniumUtil {
 		do{
 			start = str.indexOf("${", end);
 			end = str.indexOf("}",start);
-			if(end == -1 || start ==-1) break;
+			if(end == -1 || start ==-1) {
+                break;
+            }
 			
 			String substr = str.substring(start,end+1);
 			//解析EL表达式
 			Object val =parseEL(substr);
 			
-			if(val instanceof List)
-				throw new Exception("类型错误，字符串中的取值表达式的获取结果是一个 List 类型！");
+			if(val instanceof List) {
+                throw new Exception("类型错误，字符串中的取值表达式的获取结果是一个 List 类型！");
+            }
 		
 			res = res.replace(substr, val.toString());
 		}while(end < str.length());

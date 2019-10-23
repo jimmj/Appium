@@ -35,17 +35,20 @@ public class RunUnitService {
      */
     public TestCase getCase(int index){
         int n = 0;
-        if(testunit.getCaseMap() == null)
+        if(testunit.getCaseMap() == null) {
             return null;
+        }
         
         int size = testunit.getCaseMap().size();
-        if(index < 0 || (index > 0 && index >= size))
+        if(index < 0 || (index > 0 && index >= size)) {
             throw new IndexOutOfBoundsException("index=" + index + ", size=" + size);
+        }
         
         //遍历map内部Entry集合
         for(Map.Entry<String,TestCase> e : testunit.getCaseMap().entrySet()){
-            if(n++ == index)
+            if(n++ == index) {
                 return e.getValue();
+            }
         }
         
         return null;
@@ -72,8 +75,9 @@ public class RunUnitService {
     	List<TestStep> steps = testCase.getSteps();
     	
     	for(TestStep step : steps){
-    		if(step.isCancel())
-    			continue;
+    		if(step.isCancel()) {
+                continue;
+            }
 //    		System.out.println("开始执行: "+step.toString());
     		StepAction action = step.getAction();
     		Class<?> clazz = action.handler();
@@ -98,8 +102,9 @@ public class RunUnitService {
      * @return
      */
     private String getMethodName(String actionKey){
-    	if(actionKey == null || "".equals(actionKey))
-    		throw new RuntimeException("empty action key");
+    	if(actionKey == null || "".equals(actionKey)) {
+            throw new RuntimeException("empty action key");
+        }
     	
     	char[] arr = actionKey.toCharArray();
     	char prevChar = '\0';

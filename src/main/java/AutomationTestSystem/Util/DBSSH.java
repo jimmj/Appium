@@ -12,8 +12,9 @@ public class DBSSH {
     static String rhost = "rm-wz9f2uq58wflnolke.mysql.rds.aliyuncs.com";//远程MySQL服务器  
     static int rport = 3306;//远程MySQL服务端口  
   
-    public static void go() {  
-        String user = "root";//SSH连接用户名  
+    public static void go() {
+        //SSH连接用户名
+        String user = "root";
         String password = "\\Jg9.>P#fa8w";//SSH连接密码  
         String host = "119.23.226.118";//SSH服务器  
         int port = 22;//SSH访问端口  

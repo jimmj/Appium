@@ -1,6 +1,5 @@
 package AutomationTestSystem.Util;
 
-import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -224,7 +223,7 @@ public class DBHelper {
     
 	/**
      * 指定SQL语句,执行查询操作,并打印结果
-     * @param sql
+     * @param SQL
      * @return
      */
     public static void Query(String SQL) {  
@@ -449,8 +448,9 @@ public class DBHelper {
     
     private static void checkConnection(){
         try {
-            if(connection == null || connection.isClosed())
+            if(connection == null || connection.isClosed()) {
                 connect();
+            }
         } catch (Exception e) {
             LOG.error(e.getMessage(), e.fillInStackTrace());
         }
@@ -458,8 +458,9 @@ public class DBHelper {
     
     private static void checkConnection1(){
         try {
-            if(connection == null || connection.isClosed())
+            if(connection == null || connection.isClosed()) {
                 connect1();
+            }
         } catch (Exception e) {
             LOG.error(e.getMessage(), e.fillInStackTrace());
         }
@@ -469,7 +470,9 @@ public class DBHelper {
         try {
             if(connection == null || connection.isClosed())
 //            	connectsshpassword();
+            {
                 connectsshkey();
+            }
                 connect2();
         } catch (Exception e) {
             LOG.error(e.getMessage(), e.fillInStackTrace());
@@ -487,8 +490,9 @@ public class DBHelper {
             LOG.info("数据库连接成功");
         } catch (Exception e) {
             String message = "数据库连接失败";
-            if(e instanceof ClassNotFoundException)
+            if(e instanceof ClassNotFoundException) {
                 message = "数据库驱动类未找到";
+            }
             throw new Exception(message, e.fillInStackTrace());
         } 
     }
@@ -500,8 +504,9 @@ public class DBHelper {
             LOG.info("数据库连接成功");
         } catch (Exception e) {
             String message = "数据库连接失败";
-            if(e instanceof ClassNotFoundException)
+            if(e instanceof ClassNotFoundException) {
                 message = "数据库驱动类未找到";
+            }
             throw new Exception(message, e.fillInStackTrace());
         } 
     }
@@ -547,8 +552,9 @@ public class DBHelper {
         } catch (Exception e) {
             e.printStackTrace();  
             String message = "数据库连接失败";
-            if(e instanceof ClassNotFoundException)
+            if(e instanceof ClassNotFoundException) {
                 message = "数据库驱动类未找到";
+            }
             throw new Exception(message, e.fillInStackTrace());
         } 
     }
@@ -558,8 +564,9 @@ public class DBHelper {
      * @param ps
      */
     public static void close(PreparedStatement ps){
-        if(ps == null)
+        if(ps == null) {
             return ;
+        }
         close(ps, null);
     }
     
@@ -587,8 +594,9 @@ public class DBHelper {
      */
     public static void close(){
         try {
-            if(connection != null && !connection.isClosed())
+            if(connection != null && !connection.isClosed()) {
                 connection.close();
+            }
             connection = null;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -603,27 +611,33 @@ public class DBHelper {
  	    this.passphrase = passphrase;
  	   }
 
- 	   public String getPassphrase() {
+ 	   @Override
+       public String getPassphrase() {
  	    return passphrase;
  	   }
 
- 	   public String getPassword() {
+ 	   @Override
+       public String getPassword() {
  	    return null;
  	   }
 
- 	   public boolean promptPassphrase(String s) {
+ 	   @Override
+       public boolean promptPassphrase(String s) {
  	    return true;
  	   }
 
- 	   public boolean promptPassword(String s) {
+ 	   @Override
+       public boolean promptPassword(String s) {
  	    return true;
  	   }
 
- 	   public boolean promptYesNo(String s) {
+ 	   @Override
+       public boolean promptYesNo(String s) {
  	    return true;
  	   }
 
- 	   public void showMessage(String s) {
+ 	   @Override
+       public void showMessage(String s) {
  	    System.out.println(s);
  	   }
     }

@@ -87,8 +87,9 @@ public class WebXmlParseService {
 		try {
 			if (fs.length >= 300) {
 				for (File f : fs) {
-					if (f.getName().contains("png"))
-						f.delete();
+					if (f.getName().contains("png")) {
+                        f.delete();
+                    }
 				}
 			}
 
@@ -124,8 +125,9 @@ public class WebXmlParseService {
 
 		TestUnit TestUnit = null;
 
-		if ( xmlFile == null || !xmlFile.exists()  )
-			return TestUnit;
+		if ( xmlFile == null || !xmlFile.exists()  ) {
+            return TestUnit;
+        }
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
@@ -146,13 +148,15 @@ public class WebXmlParseService {
 				child = (Element) cases.item(i);
 				TestCase = parseTestCase(child);
 				
-				if (TestCase == null)
-					continue;
+				if (TestCase == null) {
+                    continue;
+                }
 				
-				if (caseMap.containsKey(TestCase.getId()))
-					throw new RuntimeException("存在多个" + TestCase.getId() + "，请检查id配置");
-				else
-					caseMap.put(TestCase.getId(), TestCase);
+				if (caseMap.containsKey(TestCase.getId())) {
+                    throw new RuntimeException("存在多个" + TestCase.getId() + "，请检查id配置");
+                } else {
+                    caseMap.put(TestCase.getId(), TestCase);
+                }
 			}
 			
 			TestUnit = new TestUnit();
@@ -170,8 +174,9 @@ public class WebXmlParseService {
 	 * @return
 	 */
 	private static TestCase parseTestCase(Element element) {
-		if (element == null)
-			return null;
+		if (element == null) {
+            return null;
+        }
 		
 		NamedNodeMap attrs = element.getAttributes();
 		//根据case的属性实例化TestCase，并注入相应字段值
@@ -199,8 +204,9 @@ public class WebXmlParseService {
 	 * @return
 	 */
 	private static TestStep parseTestStep(Element element) {
-		if (element == null)
-			return null;
+		if (element == null) {
+            return null;
+        }
 		
 		TestStep TestStep = initByAttributes(element.getAttributes(), new TestStep());
 		TestStep.setWebDriver(driver);
@@ -216,8 +222,9 @@ public class WebXmlParseService {
 	 * @return
 	 */
 	private static <T> T initByAttributes(NamedNodeMap attrs, T t) {
-		if (attrs == null || attrs.getLength() == 0)
-			return t;
+		if (attrs == null || attrs.getLength() == 0) {
+            return t;
+        }
 		
 		int len = attrs.getLength();
 		Node attr;
@@ -226,7 +233,9 @@ public class WebXmlParseService {
 		//通过反射逐个注入字段值
 		for (int i = 0; i < len; i++) {
 			attr = attrs.item(i);
-			if (attr == null) continue;
+			if (attr == null) {
+                continue;
+            }
 			
 			name = attr.getNodeName();
 			value = attr.getNodeValue();
@@ -245,10 +254,12 @@ public class WebXmlParseService {
 	 * @return
 	 */
 	private static <T> T initByReflect(String name, String value, T t) {
-		if (t == null)
-			throw new RuntimeException("null object");
-		if (name == null || "".equals(name))
-			throw new RuntimeException("empty name");
+		if (t == null) {
+            throw new RuntimeException("null object");
+        }
+		if (name == null || "".equals(name)) {
+            throw new RuntimeException("empty name");
+        }
 		
 		Class<?> clazz = t.getClass();
 		Method setter, getter;
@@ -262,13 +273,15 @@ public class WebXmlParseService {
 			
 			if ("action".equals(name))
 				//根据StepAction类中的map来获取名称对应的StepAction（枚举）实例
-				setter.invoke(t, StepAction.action(value));
-			else if ("cancel".equals(name))
-				setter.invoke(t, "true".equals(value) ? true : false);
-			else if("details".equals(name))
-				setter.invoke(t,parseDetail(value));
-			else
-				setter.invoke(t, value);
+            {
+                setter.invoke(t, StepAction.action(value));
+            } else if ("cancel".equals(name)) {
+                setter.invoke(t, "true".equals(value) ? true : false);
+            } else if("details".equals(name)) {
+                setter.invoke(t,parseDetail(value));
+            } else {
+                setter.invoke(t, value);
+            }
 		} catch (Exception e) {
 //			System.out.println("对象反射初始化失败");
 //			e.printStackTrace();

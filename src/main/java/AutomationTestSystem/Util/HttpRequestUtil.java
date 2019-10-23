@@ -8,6 +8,9 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * @author admin
+ */
 public class HttpRequestUtil {
     /**
      * 指定API接口URL,POST请求参数,获取Cookie

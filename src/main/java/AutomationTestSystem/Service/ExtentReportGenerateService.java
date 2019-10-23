@@ -35,6 +35,7 @@ public class ExtentReportGenerateService implements IReporter {
 
     private ExtentReports extent;
 
+    @Override
     public void generateReport(List<XmlSuite>  xmlSuites, List<ISuite> suites, String outputDirectory) {
         init(suites);
         boolean createSuiteNode = false;
@@ -155,6 +156,7 @@ public class ExtentReportGenerateService implements IReporter {
         if (tests.size() > 0) {
             //调整用例排序，按时间排序
             Set<ITestResult> treeSet = new TreeSet<ITestResult>(new Comparator<ITestResult>() {
+                @Override
                 public int compare(ITestResult o1, ITestResult o2) {
                     return o1.getStartMillis()<o2.getStartMillis()?-1:1;
                 }
@@ -184,8 +186,9 @@ public class ExtentReportGenerateService implements IReporter {
                 }
                 //test.getModel().setDescription(description.toString());
                 //test = extent.createTest(result.getMethod().getMethodName());
-                for (String group : result.getMethod().getGroups())
+                for (String group : result.getMethod().getGroups()) {
                     test.assignCategory(group);
+                }
                  
                 List<String> outputList = Reporter.getOutput(result);
                 for(String output:outputList){

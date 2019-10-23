@@ -27,8 +27,9 @@ public class ConfigUtil {
         Properties p = new Properties();
         InputStream in = ConfigUtil.class.getClassLoader().getResourceAsStream(config);
         try {
-            if(in == null)
+            if(in == null) {
                 throw new Exception();
+            }
             p.load(in);
         } catch (Exception e) {
             LOG.error("配置文件加载失败", e.fillInStackTrace());

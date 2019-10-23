@@ -163,8 +163,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQuerya(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = AppiumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");
@@ -174,8 +175,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQueryw(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = SeleniumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");
@@ -185,8 +187,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQueryma(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = AppiumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");
@@ -196,8 +199,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQuerymw(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = SeleniumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");
@@ -207,8 +211,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQuerymssha(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = AppiumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");
@@ -218,8 +223,9 @@ public class DBActionHandler {
 	}
 	
 	public void dbQuerymsshw(TestStep step) throws Exception{
-		if(StringUtils.isBlank(step.getDetails().get("key")))
-			throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+		if(StringUtils.isBlank(step.getDetails().get("key"))) {
+            throw new Exception("数据库查询务必设置保存结果的键值，供后续操作使用，例子为details='key:credit'！");
+        }
 		String sql = SeleniumUtil.parseStringHasEls(step.getValue());
 //		System.err.println("Query-sql "+sql);
 		System.out.println("『正常测试』开始执行: "+ step.getValue() + " <" +step.getDesc() + ">");

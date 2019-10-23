@@ -41,21 +41,24 @@ public class ExcelHelper {
     }
     
     public static void close(){
-        if(WORKBOOK != null)
+        if(WORKBOOK != null) {
             WORKBOOK.close();
+        }
         WORKBOOK = null;
     }
     
     private static void check(){
-        if(WORKBOOK == null)
+        if(WORKBOOK == null) {
             throw new RuntimeException("文件文空");
+        }
     }
     
     public static List<String> getCellContentByIndexs(int sheetIndex, String... indexs) throws Exception{
         
         List<String> cellList = new ArrayList<String>();
-        if(indexs == null || indexs.length == 0)
+        if(indexs == null || indexs.length == 0) {
             return cellList;
+        }
         check();
         Sheet sheet = WORKBOOK.getSheet(sheetIndex);
         Cell cell;
@@ -74,11 +77,13 @@ public class ExcelHelper {
     private static boolean checkIndex(String index){
         
         boolean isOk = false;
-        if(index == null || "".equals(index))
+        if(index == null || "".equals(index)) {
             return isOk;
+        }
         Matcher m = INDEX_PATTERN.matcher(index.trim());
-        if(m.find())
+        if(m.find()) {
             isOk = true;
+        }
         return isOk;
     }
 }

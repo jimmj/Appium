@@ -34,9 +34,11 @@ public class SlideActionHandler {
     	//滑动起始点与滑动幅度
     	System.out.println("『正常测试』开始执行: " + "<" +step.getDesc() + ">");
     	double[] cor = {0.75 ,0.5 ,0.25 ,0.5};
-    	if(StringUtils.isBlank(step.getDetails().get("amp")))
-    		commonSlide(step,cor);
-    	else commonSlide(step,5);
+    	if(StringUtils.isBlank(step.getDetails().get("amp"))) {
+            commonSlide(step,cor);
+        } else {
+            commonSlide(step,5);
+        }
     	Thread.sleep(500);
     }
     
@@ -50,9 +52,11 @@ public class SlideActionHandler {
     	//向右滑动的起点与终点坐标
     	System.out.println("『正常测试』开始执行: " + "<" +step.getDesc() + ">");
     	double[] cor = {0.25 ,0.5 ,0.75 ,0.5};
-    	if(StringUtils.isBlank(step.getDetails().get("amp")))
-    		commonSlide(step,cor);
-    	else commonSlide(step,3);
+    	if(StringUtils.isBlank(step.getDetails().get("amp"))) {
+            commonSlide(step,cor);
+        } else {
+            commonSlide(step,3);
+        }
     	Thread.sleep(500);
     }
     
@@ -68,9 +72,11 @@ public class SlideActionHandler {
     	System.out.println("『正常测试』开始执行: " + "<" +step.getDesc() + ">");
     	//向上滑动的起点与终点坐标
     	double[] cor = {0.5 ,0.75 ,0.5 ,0.2947};
-    	if(StringUtils.isBlank(step.getDetails().get("amp")))
-    		commonSlide(step,cor);
-    	else commonSlide(step,7);
+    	if(StringUtils.isBlank(step.getDetails().get("amp"))) {
+            commonSlide(step,cor);
+        } else {
+            commonSlide(step,7);
+        }
         Thread.sleep(500);
     }    
     
@@ -86,9 +92,11 @@ public class SlideActionHandler {
     	//向下滑动的起点与终点坐标
     	System.out.println("『正常测试』开始执行: " + "<" +step.getDesc() + ">");
     	double[] cor = {0.5 ,0.25 ,0.5 ,0.75};
-    	if(StringUtils.isBlank(step.getDetails().get("amp")))
-    		commonSlide(step,cor);
-    	else commonSlide(step,1);
+    	if(StringUtils.isBlank(step.getDetails().get("amp"))) {
+            commonSlide(step,cor);
+        } else {
+            commonSlide(step,1);
+        }
     	Thread.sleep(500);
     } 
     
@@ -132,8 +140,9 @@ public class SlideActionHandler {
         
 		int startx = -1,starty =-1 ,endx = -1,endy = -1,ampx = 0,ampy = 0;
 		
-		if(StringUtils.isBlank(step.getDetails().get("amp"))) 
-			throw new Exception("必须指定滑动幅度！");
+		if(StringUtils.isBlank(step.getDetails().get("amp"))) {
+            throw new Exception("必须指定滑动幅度！");
+        }
 		
 		if(!StringUtils.isBlank(step.getDetails().get("sxr"))){
 			startx = (int)(width*Double.valueOf(step.getDetails().get("sxr")));
@@ -141,8 +150,10 @@ public class SlideActionHandler {
 		if(!StringUtils.isBlank(step.getDetails().get("syr"))){
 			starty = (int)(width*Double.valueOf(step.getDetails().get("sxr")));
 		}
-		if(startx < 0 ^ starty < 0)
-			throw new Exception("滑动的起始坐标配置不全或错误！");;
+		if(startx < 0 ^ starty < 0) {
+            throw new Exception("滑动的起始坐标配置不全或错误！");
+        }
+        ;
 		
 		//没有配置起点，则由控件确定起点坐标
 		if(startx < 0 && starty < 0){
@@ -224,7 +235,9 @@ public class SlideActionHandler {
 	        }
         }
   
-        if(count == 4 ) throw new Exception("滑动的坐标配置不全或错误！");
+        if(count == 4 ) {
+            throw new Exception("滑动的坐标配置不全或错误！");
+        }
                 
         for (int i = 0; i < num; i++) {  
         	step.getAndroidDriver().manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
